@@ -1,6 +1,6 @@
 AssemblyScript Native Messaging host
 
-# Install dependencies
+## Install dependencies
 
 ```
 git clone https://github.com/guest271314/native-messaging-assemblyscript
@@ -8,7 +8,7 @@ cd native-messaging-assemblyscript
 bun install assemblyscript assemblyscript/wasi-shim
 ```
 
-# Compile to WASM
+## Compile to WASM
 
 ```
 ./node_modules/.bin/asc -Ospeed --config ./node_modules/@assemblyscript/wasi-shim/asconfig.json nm_assemblyscript.ts -o nm_assemblyscript.wasm
@@ -31,5 +31,5 @@ The Native Messaging host echoes back the message passed.
 
 For differences between OS and browser implementations see [Chrome incompatibilities](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Chrome_incompatibilities#native_messaging).
 
-# License
+## License
 Do What the Fuck You Want to Public License [WTFPLv2](http://www.wtfpl.net/about/)
