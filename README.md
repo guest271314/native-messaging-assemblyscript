@@ -8,13 +8,29 @@ cd native-messaging-assemblyscript
 bun install assemblyscript assemblyscript/wasi-shim
 ```
 
-## Compile to WASM
+### Compile to WASM using `asc`
 
-```
-./node_modules/.bin/asc -Ospeed --config ./node_modules/@assemblyscript/wasi-shim/asconfig.json nm_assemblyscript.ts -o nm_assemblyscript.wasm
+```bash
+npx asc --shrinkLevel 3 --optimizeLevel 3 \
+--config ./node_modules/@assemblyscript/wasi-shim/asconfig.json \
+--exportStart _start \
+nm_assemblyscript.ts -o nm_assemblyscript.wasm
 ```
 
-Adjust `nm_assemblyscript.sh` accordingly to execute the compiled WASM with a WebAssembly runtime other than `wasmtime`, e.g., `bun`, `wasmer`, et al.
+### Compile to WASM using `warpo`
+Install [`warpo`](https://github.com/wasm-ecosystem/warpo)
+```bash
+bun install warpo
+```
+
+```bash
+bunx warpo nm_assemblyscript.ts --host wasi_snapshot_preview1 \
+--shrinkLevel 3 --optimizeLevel 3 \
+-o nm_warpo.wasm \
+--exportStart _start
+```
+
+Adjust `nm_assemblyscript.sh` accordingly to execute the compiled WASM with a WebAssembly runtime other than `wasmtime`, e.g., `bun` (`bun` 1.3.8 expects a `_start` function), `wasmer`, et al.
 
 # Installation and usage on Chrome and Chromium
 
