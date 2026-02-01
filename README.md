@@ -13,7 +13,6 @@ bun install assemblyscript assemblyscript/wasi-shim
 ```bash
 npx asc --shrinkLevel 3 --optimizeLevel 3 \
 --config ./node_modules/@assemblyscript/wasi-shim/asconfig.json \
---exportStart _start \
 nm_assemblyscript.ts -o nm_assemblyscript.wasm
 ```
 
@@ -27,10 +26,9 @@ bun install warpo
 bunx warpo nm_assemblyscript.ts --host wasi_snapshot_preview1 \
 --shrinkLevel 3 --optimizeLevel 3 \
 -o nm_warpo.wasm \
---exportStart _start
+--exportStart _start # for bun 1.3.8
 ```
 
-Adjust `nm_assemblyscript.sh` accordingly to execute the compiled WASM with a WebAssembly runtime other than `wasmtime`, e.g., `bun` (`bun` 1.3.8 expects a `_start` function), `wasmer`, et al.
 
 # Installation and usage on Chrome and Chromium
 
