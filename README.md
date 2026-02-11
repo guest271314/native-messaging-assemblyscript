@@ -23,7 +23,7 @@ bun install warpo
 ```
 
 ```bash
-bunx warpo nm_assemblyscript.ts --host wasi_snapshot_preview1 \
+bun x warpo nm_assemblyscript.ts --host wasi_snapshot_preview1 \
 --shrinkLevel 3 --optimizeLevel 3 \
 -o nm_warpo.wasm \
 --exportStart _start # for bun 1.3.8
