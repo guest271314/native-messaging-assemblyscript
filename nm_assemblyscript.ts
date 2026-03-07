@@ -122,6 +122,9 @@ function sendMessage(messageBuffer: ArrayBuffer): void {
 export function main(): void {
   while (true) {
     const message: ArrayBuffer = getMessage();
+    if (message.byteLength === 0) {
+      break;
+    }
     sendMessage(message);
   }
 }
